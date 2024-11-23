@@ -50,12 +50,11 @@ public class RealizarTransaccionController {
             switch (tipo) {
                 case "Deposit" -> {
                     if (destino != null) {
-                        destino.deposit(monto);
                         this.bankmodel.processTransaction(TransactionFactory.createDeposit(destino, monto));
                     }
                 }
                 case "Withdraw" -> {
-                    if (origen != null && origen.withdraw(monto)) {
+                    if (origen != null ) {
                         this.bankmodel.processTransaction(TransactionFactory.createWithdraw(origen, monto));
                     }
                 }
