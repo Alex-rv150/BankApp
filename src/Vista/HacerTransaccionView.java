@@ -2,8 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package Vista;
+
 /**
  *
  * @author arang
@@ -13,6 +13,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 public class HacerTransaccionView extends JPanel {
+
     // Componentes de la vista
     private JLabel tituloLabel;
     private JLabel tipoTransaccionLabel;
@@ -45,7 +46,7 @@ public class HacerTransaccionView extends JPanel {
         montoLabel = new JLabel("Amount");
         montoLabel.setFont(new java.awt.Font("Segoe UI", 1, 12));
 
-        tipoTransaccionInput = new JComboBox<>(new String[] { "Deposit", "Withdraw", "Transfer" });
+        tipoTransaccionInput = new JComboBox<>(new String[]{"Deposit", "Withdraw", "Transfer"});
         cuentaOrigenInput = new JTextField();
         cuentaDestinoInput = new JTextField();
         montoInput = new JTextField();
@@ -57,53 +58,53 @@ public class HacerTransaccionView extends JPanel {
         this.setLayout(layout);
 
         layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(30)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(tipoTransaccionLabel)
-                        .addComponent(cuentaOrigenLabel)
-                        .addComponent(cuentaDestinoLabel)
-                        .addComponent(montoLabel))
-                    .addGap(18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        .addComponent(tipoTransaccionInput, 0, 200, Short.MAX_VALUE)
-                        .addComponent(cuentaOrigenInput)
-                        .addComponent(cuentaDestinoInput)
-                        .addComponent(montoInput))
-                    .addContainerGap(30, Short.MAX_VALUE))
-                .addGroup(GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
-                    .addGap(100)
-                    .addComponent(tituloLabel))
-                .addGroup(GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
-                    .addGap(150)
-                    .addComponent(ejecutarBoton))
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(30)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(tipoTransaccionLabel)
+                                        .addComponent(cuentaOrigenLabel)
+                                        .addComponent(cuentaDestinoLabel)
+                                        .addComponent(montoLabel))
+                                .addGap(18)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tipoTransaccionInput, 0, 200, Short.MAX_VALUE)
+                                        .addComponent(cuentaOrigenInput)
+                                        .addComponent(cuentaDestinoInput)
+                                        .addComponent(montoInput))
+                                .addContainerGap(30, Short.MAX_VALUE))
+                        .addGroup(GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                                .addGap(100)
+                                .addComponent(tituloLabel))
+                        .addGroup(GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                                .addGap(150)
+                                .addComponent(ejecutarBoton))
         );
 
         layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(20)
-                    .addComponent(tituloLabel)
-                    .addGap(20)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(tipoTransaccionLabel)
-                        .addComponent(tipoTransaccionInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(20)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(cuentaOrigenLabel)
-                        .addComponent(cuentaOrigenInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(20)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(cuentaDestinoLabel)
-                        .addComponent(cuentaDestinoInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(20)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(montoLabel)
-                        .addComponent(montoInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(30)
-                    .addComponent(ejecutarBoton)
-                    .addContainerGap(30, Short.MAX_VALUE))
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(20)
+                                .addComponent(tituloLabel)
+                                .addGap(20)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(tipoTransaccionLabel)
+                                        .addComponent(tipoTransaccionInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(20)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(cuentaOrigenLabel)
+                                        .addComponent(cuentaOrigenInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(20)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(cuentaDestinoLabel)
+                                        .addComponent(cuentaDestinoInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(20)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(montoLabel)
+                                        .addComponent(montoInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(30)
+                                .addComponent(ejecutarBoton)
+                                .addContainerGap(30, Short.MAX_VALUE))
         );
     }
 

@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author Janus
  */
 public class Bank {
+
     private final UserRepository userRepository;
     private final AccountRepository accountRepository;
     private final TransactionService transactionService;
@@ -20,20 +21,14 @@ public class Bank {
         this.accountRepository = new AccountRepository();
         this.transactionService = new TransactionService();
     }
-    
+
     // Agregar un nuevo usuario al banco
-    public void addUser(int id, String firstname, String lastname, int age) {
-        User user = new User(id, firstname, lastname, age);
+    public void addUser(User user) {
         userRepository.add(user);
     }
 
     // Crear una nueva cuenta y asignarla a un usuario
-    public void createAccount(String accountId, int userId, double initialBalance) {
-        User owner = userRepository.findById(userId);
-        if (owner == null) {
-            throw new IllegalArgumentException("Usuario no encontrado");
-        }
-        Account account = new BasicAccount(accountId, owner, initialBalance);
+    public void createAccount(BasicAccount account) {
         accountRepository.add(account);
     }
 

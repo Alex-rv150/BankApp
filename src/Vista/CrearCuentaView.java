@@ -11,9 +11,8 @@ import java.awt.event.ActionListener;
  *
  * @author arang
  */
-
-
 public class CrearCuentaView extends JPanel {
+
     // Componentes de la vista
     private JLabel tituloLabel;
     private JLabel userIdLabel;
@@ -47,41 +46,41 @@ public class CrearCuentaView extends JPanel {
         this.setLayout(layout);
 
         layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(30)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(userIdLabel)
-                        .addComponent(initialBalanceLabel))
-                    .addGap(18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        .addComponent(userIdInput)
-                        .addComponent(initialBalanceInput, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                    .addContainerGap(30, Short.MAX_VALUE))
-                .addGroup(GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
-                    .addGap(100)
-                    .addComponent(tituloLabel))
-                .addGroup(GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
-                    .addGap(150)
-                    .addComponent(crearCuentaBoton))
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(30)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(userIdLabel)
+                                        .addComponent(initialBalanceLabel))
+                                .addGap(18)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(userIdInput)
+                                        .addComponent(initialBalanceInput, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                .addContainerGap(30, Short.MAX_VALUE))
+                        .addGroup(GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                                .addGap(100)
+                                .addComponent(tituloLabel))
+                        .addGroup(GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                                .addGap(150)
+                                .addComponent(crearCuentaBoton))
         );
 
         layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(20)
-                    .addComponent(tituloLabel)
-                    .addGap(20)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(userIdLabel)
-                        .addComponent(userIdInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(20)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(initialBalanceLabel)
-                        .addComponent(initialBalanceInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(30)
-                    .addComponent(crearCuentaBoton)
-                    .addContainerGap(30, Short.MAX_VALUE))
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(20)
+                                .addComponent(tituloLabel)
+                                .addGap(20)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(userIdLabel)
+                                        .addComponent(userIdInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(20)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(initialBalanceLabel)
+                                        .addComponent(initialBalanceInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(30)
+                                .addComponent(crearCuentaBoton)
+                                .addContainerGap(30, Short.MAX_VALUE))
         );
     }
 

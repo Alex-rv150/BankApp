@@ -54,56 +54,56 @@ public class RegistroUsuarioView extends JPanel {
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addComponent(RegistroUsuarioIdLabel)
-                                .addComponent(RegistroUsuarioFirstnameLabel)
-                                .addComponent(RegistroUsuarioLastnameLabel)
-                                .addComponent(RegistroUsuarioAgeLabel))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addComponent(RegistroUsuarioIdInput)
-                                .addComponent(RegistroUsuarioFirstnameInput)
-                                .addComponent(RegistroUsuarioLastnameInput)
-                                .addComponent(RegistroUsuarioAgeInput)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(0, 240, Short.MAX_VALUE)
-                            .addComponent(RegistroUsuarioTituloLabel)
-                            .addGap(0, 240, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(0, 280, Short.MAX_VALUE)
-                            .addComponent(RegistroUsuarioBoton)
-                            .addGap(0, 280, Short.MAX_VALUE)))
-                    .addContainerGap())
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(RegistroUsuarioIdLabel)
+                                                        .addComponent(RegistroUsuarioFirstnameLabel)
+                                                        .addComponent(RegistroUsuarioLastnameLabel)
+                                                        .addComponent(RegistroUsuarioAgeLabel))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(RegistroUsuarioIdInput)
+                                                        .addComponent(RegistroUsuarioFirstnameInput)
+                                                        .addComponent(RegistroUsuarioLastnameInput)
+                                                        .addComponent(RegistroUsuarioAgeInput)))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(0, 240, Short.MAX_VALUE)
+                                                .addComponent(RegistroUsuarioTituloLabel)
+                                                .addGap(0, 240, Short.MAX_VALUE))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(0, 280, Short.MAX_VALUE)
+                                                .addComponent(RegistroUsuarioBoton)
+                                                .addGap(0, 280, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(12, 12, 12)
-                    .addComponent(RegistroUsuarioTituloLabel)
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(RegistroUsuarioIdLabel)
-                        .addComponent(RegistroUsuarioIdInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(RegistroUsuarioFirstnameLabel)
-                        .addComponent(RegistroUsuarioFirstnameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(RegistroUsuarioLastnameLabel)
-                        .addComponent(RegistroUsuarioLastnameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(RegistroUsuarioAgeLabel)
-                        .addComponent(RegistroUsuarioAgeInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addComponent(RegistroUsuarioBoton)
-                    .addContainerGap(83, Short.MAX_VALUE))
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(RegistroUsuarioTituloLabel)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(RegistroUsuarioIdLabel)
+                                        .addComponent(RegistroUsuarioIdInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(RegistroUsuarioFirstnameLabel)
+                                        .addComponent(RegistroUsuarioFirstnameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(RegistroUsuarioLastnameLabel)
+                                        .addComponent(RegistroUsuarioLastnameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(RegistroUsuarioAgeLabel)
+                                        .addComponent(RegistroUsuarioAgeInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(RegistroUsuarioBoton)
+                                .addContainerGap(83, Short.MAX_VALUE))
         );
     }
 
@@ -127,8 +127,8 @@ public class RegistroUsuarioView extends JPanel {
     public JButton getRegistroUsuarioBoton() {
         return RegistroUsuarioBoton;
     }
-    
-      // Métodos para interactuar con la vista
+
+    // Métodos para interactuar con la vista
     public String getIdInput() {
         return RegistroUsuarioIdInput.getText();
     }
@@ -152,11 +152,8 @@ public class RegistroUsuarioView extends JPanel {
         RegistroUsuarioAgeInput.setText("");
     }
 
-
-
     // Setter for button action
     public void setRegistroUsuarioBotonActionListener(ActionListener listener) {
         RegistroUsuarioBoton.addActionListener(listener);
     }
 }
-
