@@ -4,16 +4,19 @@
  */
 package bank;
 
-import User.User;
-import Transaction.TransactionType;
-import Transaction.Transaction;
-import Account.Account;
+
 import Vista.CrearCuentaView;
 import Vista.HacerTransaccionView;
 import Vista.ListarCuentasView;
 import Vista.ListarTransaccionesView;
 import Vista.ListarUsuariosView;
 import Vista.RegistroUsuarioView;
+import core.models.Account;
+import core.models.BasicAccount;
+import core.models.Transaction;
+import core.models.TransactionFactory;
+import core.models.TransactionType;
+import core.models.User;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -114,7 +117,7 @@ public class Main extends javax.swing.JFrame {
                     String accountId = String.format("%03d-%06d-%02d",
                         random.nextInt(1000), random.nextInt(1000000), random.nextInt(100));
 
-                    accounts.add(new Account(accountId, selectedUser, initialBalance));
+                    this.accounts.add(new BasicAccount(accountId, selectedUser, initialBalance));
                     crearCuentaView.clearFields();
                     JOptionPane.showMessageDialog(this, "Account created successfully!");
                 } else {
@@ -155,18 +158,19 @@ public class Main extends javax.swing.JFrame {
                     case "Deposit" -> {
                         if (destino != null) {
                             destino.deposit(monto);
-                            transactions.add(new Transaction(TransactionType.DEPOSIT, null, destino, monto));
+
+                            this.transactions.add(TransactionFactory.createDeposit(destino, monto));
                         }
                     }
                     case "Withdraw" -> {
                         if (origen != null && origen.withdraw(monto)) {
-                            transactions.add(new Transaction(TransactionType.WITHDRAW, origen, null, monto));
+                            this.transactions.add(TransactionFactory.createWithdraw(origen, monto));
                         }
                     }
                     case "Transfer" -> {
                         if (origen != null && destino != null && origen.withdraw(monto)) {
                             destino.deposit(monto);
-                            transactions.add(new Transaction(TransactionType.TRANSFER, origen, destino, monto));
+                            this.transactions.add(TransactionFactory.createTransfer(origen, destino, monto));
                         }
                     }
                 }
@@ -249,10 +253,10 @@ public class Main extends javax.swing.JFrame {
             listarTransaccionesView.clearTable();
             for (Transaction transaction : transactions) {
                 listarTransaccionesView.addRow(new Object[]{
-                    transaction.getType().name(),
-                    transaction.getSourceAccount() != null ? transaction.getSourceAccount().getId() : "None",
-                    transaction.getDestinationAccount() != null ? transaction.getDestinationAccount().getId() : "None",
-                    transaction.getAmount()
+                    transaction.getType(),
+                transaction.getSourceAccountId(),
+                transaction.getDestinationAccountId(),
+                transaction.getAmount()
                 });
             }
         });

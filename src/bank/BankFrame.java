@@ -8,10 +8,13 @@
  */
 package bank;
 
-import User.User;
-import Transaction.TransactionType;
-import Transaction.Transaction;
-import Account.Account;
+
+import core.models.Account;
+import core.models.BasicAccount;
+import core.models.Transaction;
+import core.models.TransactionFactory;
+import core.models.TransactionType;
+import core.models.User;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -551,7 +554,12 @@ public class BankFrame extends javax.swing.JFrame {
         Collections.reverse(transactionsCopy);
 
         for (Transaction transaction : transactionsCopy) {
-            model.addRow(new Object[]{transaction.getType().name(), (transaction.getSourceAccount() != null ? transaction.getSourceAccount().getId() : "None"), (transaction.getDestinationAccount()!= null ? transaction.getDestinationAccount().getId() : "None"), transaction.getAmount()});
+            model.addRow(new Object[]{
+                transaction.getType(),
+                transaction.getSourceAccountId(),
+                transaction.getDestinationAccountId(),
+                transaction.getAmount()
+            });
         }
     }//GEN-LAST:event_ListaTransaccionesBotonRefrescarActionPerformed
 
@@ -597,7 +605,7 @@ public class BankFrame extends javax.swing.JFrame {
                     if (destinationAccount != null) {
                         destinationAccount.deposit(amount);
 
-                        this.transactions.add(new Transaction(TransactionType.DEPOSIT, null, destinationAccount, amount));
+                        this.transactions.add(TransactionFactory.createDeposit(destinationAccount, amount));
 
                         HacerTransaccionCuentaOrigenInput.setText("");
                         HacerTransaccionCuentaDestinoInput.setText("");
@@ -616,8 +624,8 @@ public class BankFrame extends javax.swing.JFrame {
                         }
                     }
                     if (sourceAccount != null && sourceAccount.withdraw(amount)) {
-                        this.transactions.add(new Transaction(TransactionType.WITHDRAW, sourceAccount, null, amount));
-
+                        this.transactions.add(TransactionFactory.createWithdraw(sourceAccount, amount));
+                        
                         HacerTransaccionCuentaOrigenInput.setText("");
                         HacerTransaccionCuentaDestinoInput.setText("");
                         HacerTransaccionAmountInput.setText("");
@@ -644,7 +652,7 @@ public class BankFrame extends javax.swing.JFrame {
                     if (sourceAccount != null && destinationAccount != null && sourceAccount.withdraw(amount)) {
                         destinationAccount.deposit(amount);
 
-                        this.transactions.add(new Transaction(TransactionType.TRANSFER, sourceAccount, destinationAccount, amount));
+                        this.transactions.add(TransactionFactory.createTransfer(sourceAccount, destinationAccount, amount));
 
                         HacerTransaccionCuentaOrigenInput.setText("");
                         HacerTransaccionCuentaDestinoInput.setText("");
@@ -689,7 +697,7 @@ public class BankFrame extends javax.swing.JFrame {
 
                 String accountId = String.format("%03d", first) + "-" + String.format("%06d", second) + "-" + String.format("%02d", third);
 
-                this.accounts.add(new Account(accountId, selectedUser, initialBalance));
+                this.accounts.add(new BasicAccount(accountId, selectedUser, initialBalance));
 
                 CrearCuentaIdUsuarioInput.setText("");
                 CrearCuentaBalanceInicialInput.setText("");

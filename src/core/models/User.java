@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package User;
+package core.models;
 
-import Account.Account;
+
 import java.util.ArrayList;
 
 /**
@@ -13,11 +13,11 @@ import java.util.ArrayList;
  */
 public class User {
     
-    private int id;
-    private String firstname;
-    private String lastname;
-    private int age;
-    private ArrayList<Account> accounts;
+    private final int id;
+    private final String firstname;
+    private final String lastname;
+    private final int age;
+    private final ArrayList<Account> accounts;
 
     public User(int id, String firstname, String lastname, int age) {
         this.id = id;
@@ -44,11 +44,15 @@ public class User {
     }
     
     public int getNumAccounts() {
-        return this.accounts.size();
+        return accounts.size();
     }
-    
+
+    public ArrayList<Account> getAccounts() {
+        return new ArrayList<>(accounts); // Return a copy to prevent modification
+    }
+
     public void addAccount(Account account) {
-        this.accounts.add(account);
+        accounts.add(account);
     }
     
 }
