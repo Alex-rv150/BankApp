@@ -4,12 +4,21 @@
  */
 package core.models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Janus
  */
 public class TransactionService {
+    private final ArrayList<Transaction> transactionHistory = new ArrayList<>();
+
     public void processTransaction(Transaction transaction) {
-        transaction.execute();
+        transaction.execute(); // Lógica delegada a la transacción
+        transactionHistory.add(transaction);
+    }
+
+    public ArrayList<Transaction> getTransactionHistory() {
+        return transactionHistory;
     }
 }
