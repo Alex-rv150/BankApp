@@ -4,6 +4,8 @@
  */
 package core.models;
 
+import java.time.LocalDateTime;
+
 
 /**
  *
@@ -13,9 +15,12 @@ public interface Transaction {
     
     void execute();
     
-    String getType();
+    TransactionType getType();
     String getSourceAccountId();
     String getDestinationAccountId();
     double getAmount();
+    Account getDestinationAccount();
+    Account getSourceAccount();
+    LocalDateTime getTimestamp();
     
 }

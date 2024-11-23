@@ -4,6 +4,8 @@
  */
 package core.models;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Janus
@@ -11,10 +13,12 @@ package core.models;
 public class DepositTransaction implements Transaction{
     private final Account destinationAccount;
     private final double amount;
+    private final LocalDateTime timestamp;
 
     public DepositTransaction(Account destinationAccount, double amount) {
         this.destinationAccount = destinationAccount;
         this.amount = amount;
+        this.timestamp = LocalDateTime.now(); // Captura la fecha y hora actuales
     }
 
     @Override
@@ -23,8 +27,8 @@ public class DepositTransaction implements Transaction{
     }
     
     @Override
-    public String getType() {
-        return "DEPOSIT";
+    public TransactionType getType() {
+        return TransactionType.DEPOSIT;
     }
 
     @Override
@@ -40,5 +44,20 @@ public class DepositTransaction implements Transaction{
     @Override
     public double getAmount() {
         return amount;
+    }
+
+    @Override
+    public Account getDestinationAccount() {
+        return destinationAccount;
+    }
+
+    @Override
+    public Account getSourceAccount() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    @Override
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
 }

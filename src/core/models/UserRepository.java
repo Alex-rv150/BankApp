@@ -5,6 +5,8 @@
 package core.models;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -24,4 +26,16 @@ public class UserRepository {
     public ArrayList<User> findAll() {
         return users;
     }
+    
+    public boolean exists(User user) {
+        return users.contains(user);
+    }
+    
+    public ArrayList<User> findAllOrderedById() {
+    return (ArrayList<User>) users.stream()
+                .sorted(Comparator.comparing(User::getId))
+                .collect(Collectors.toList());
+}
+    
+    
 }

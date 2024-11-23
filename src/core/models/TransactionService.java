@@ -5,6 +5,8 @@
 package core.models;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -21,4 +23,10 @@ public class TransactionService {
     public ArrayList<Transaction> getTransactionHistory() {
         return transactionHistory;
     }
+    
+    public ArrayList<Transaction> getTransactionsOrderedByDate() {
+    return (ArrayList<Transaction>) transactionHistory.stream()
+                             .sorted(Comparator.comparing(Transaction::getTimestamp).reversed())
+                             .collect(Collectors.toList());
+}
 }

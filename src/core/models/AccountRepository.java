@@ -5,6 +5,8 @@
 package core.models;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -24,4 +26,14 @@ public class AccountRepository {
     public ArrayList<Account> findAll() {
         return accounts;
     }
+    
+    public boolean exists(Account account) {
+        return accounts.contains(account);
+    }
+    
+    public ArrayList<Account> findAllOrderedById() {
+    return (ArrayList<Account>) accounts.stream()
+                   .sorted(Comparator.comparing(Account::getId))
+                   .collect(Collectors.toList());
+}
 }

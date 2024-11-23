@@ -4,6 +4,8 @@
  */
 package core.models;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Janus
@@ -12,11 +14,13 @@ public class TransferTransaction implements Transaction{
     private final Account sourceAccount;
     private final Account destinationAccount;
     private final double amount;
+    private final LocalDateTime timestamp;
 
     public TransferTransaction(Account sourceAccount, Account destinationAccount, double amount) {
         this.sourceAccount = sourceAccount;
         this.destinationAccount = destinationAccount;
         this.amount = amount;
+        this.timestamp = LocalDateTime.now(); // Captura la fecha y hora actuales
     }
 
     @Override
@@ -28,8 +32,8 @@ public class TransferTransaction implements Transaction{
     }
     
     @Override
-    public String getType() {
-        return "TRANSFER";
+    public TransactionType getType() {
+        return TransactionType.TRANSFER;
     }
 
     @Override
@@ -45,5 +49,20 @@ public class TransferTransaction implements Transaction{
     @Override
     public double getAmount() {
         return amount;
+    }
+    
+    @Override
+    public Account getSourceAccount() {
+        return sourceAccount;
+    }
+
+    @Override
+    public Account getDestinationAccount() {
+        return destinationAccount;
+    }
+    
+    @Override
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
 }
