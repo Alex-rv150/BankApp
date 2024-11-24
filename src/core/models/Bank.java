@@ -68,4 +68,14 @@ public class Bank {
         return transactionService.getTransactionsOrderedByDate();
     }
 
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
+
+    public AccountRepository getAccountRepository() {
+        return accountRepository;
+    }
+    
+    
+
 }
