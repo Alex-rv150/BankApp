@@ -29,7 +29,7 @@ public class ObtenerInformacionUsuariosController {
 
     private void refrescarUsuarios() {
         view.clearTable();
-        for (User user : this.bankmodel.getUsers()) {
+        for (User user : this.bankmodel.getUsersOrderedById()) {
             view.addRow(new Object[]{
                 user.getId(),
                 user.getFirstname() + " " + user.getLastname(),

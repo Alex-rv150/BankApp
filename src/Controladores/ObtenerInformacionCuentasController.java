@@ -29,7 +29,7 @@ public class ObtenerInformacionCuentasController {
 
     private void refrescarCuentas() {
         view.clearTable();
-        for (Account account : this.bankmodel.getAccounts().findAll()) {
+        for (Account account : this.bankmodel.getAccountsOrderedById()) {
             view.addRow(new Object[]{
                 account.getId(),
                 account.getOwner().getId(),

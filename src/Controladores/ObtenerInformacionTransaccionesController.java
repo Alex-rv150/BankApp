@@ -30,7 +30,7 @@ public class ObtenerInformacionTransaccionesController {
 
     private void refrescarTransaciones() {
         view.clearTable();
-        for (Transaction transaction : this.bankmodel.getTransactions()) {
+        for (Transaction transaction : this.bankmodel.getTransactionsOrderedByDate()) {
             view.addRow(new Object[]{
                 transaction.getType(),
                 transaction.getSourceAccountId(),
