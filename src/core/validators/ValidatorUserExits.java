@@ -11,7 +11,7 @@ import core.models.UserRepository;
  *
  * @author arang
  */
-public class ValidateUserExits {
+public class ValidatorUserExits {
 
     public static void validateUSersExits(UserRepository userRepository, User user) {
         if (userRepository.findById(user.getId()) == null) {
