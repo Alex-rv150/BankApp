@@ -19,7 +19,7 @@ public class AccountValidator {
             throw new ValidationException("El saldo inicial no puede ser inferior a 0.");
         }
         
-        ValidateUserExits.validateUSersExits(userRepository, account.getOwner());
+        ValidatorUserExits.validateUSersExits(userRepository, account.getOwner());
         
         
 

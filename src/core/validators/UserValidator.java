@@ -18,7 +18,7 @@ public class UserValidator {
             throw new ValidationException("El usuario no puede ser nulo.");
         }
         
-        ValidateUserExits.validateUSersNoExits(userRepository, user);
+        ValidatorUserExits.validateUSersNoExits(userRepository, user);
             
         if (user.getId() < 0 || String.valueOf(user.getId()).length() > 9) {
             throw new ValidationException("El ID debe ser mayor o igual a 0 y tener a lo más 9 dígitos.");

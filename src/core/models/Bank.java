@@ -6,8 +6,6 @@ package core.models;
 
 import core.validators.AccountValidator;
 import core.validators.UserValidator;
-import core.validators.ValidateUserExits;
-import core.validators.ValidationException;
 import core.validators.ValidationService;
 import java.util.ArrayList;
 
@@ -41,6 +39,9 @@ public class Bank {
 
     // Realizar una transacción
     public Transaction processTransaction(Transaction transaction) {
+        
+        
+        
         ValidationService.validateTransactionAccounts(accountRepository, transaction);
         if (transaction.getType() == TransactionType.WITHDRAW) {
             ValidationService.validateWithdrawAmount(transaction.getSourceAccount(), transaction.getAmount());
