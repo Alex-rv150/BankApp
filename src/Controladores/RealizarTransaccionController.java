@@ -8,6 +8,8 @@ import Vista.HacerTransaccionView;
 import core.models.Account;
 import core.models.Bank;
 import core.models.TransactionFactory;
+import core.validators.TransactionValidator;
+import core.validators.ValidationException;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,46 +32,45 @@ public class RealizarTransaccionController {
     }
 
     private void realizarTransaccion() {
+    try {
+        String tipo = view.getTipoTransaccion();
+        String cuentaOrigen = view.getCuentaOrigen();
+        String cuentaDestino = view.getCuentaDestino();
+        double monto;
 
         try {
-            String tipo = view.getTipoTransaccion();
-            String cuentaOrigen = view.getCuentaOrigen();
-            String cuentaDestino = view.getCuentaDestino();
-            double monto = Double.parseDouble(view.getMonto());
-
-            Account origen = null, destino = null;
-            for (Account account : this.bankmodel.getAccounts()) {
-                if (account.getId().equals(cuentaOrigen)) {
-                    origen = account;
-                }
-                if (account.getId().equals(cuentaDestino)) {
-                    destino = account;
-                }
-            }
-
-            switch (tipo) {
-                case "Deposit" -> {
-                    if (destino != null) {
-                        this.bankmodel.processTransaction(TransactionFactory.createDeposit(destino, monto));
-                    }
-                }
-                case "Withdraw" -> {
-                    if (origen != null ) {
-                        this.bankmodel.processTransaction(TransactionFactory.createWithdraw(origen, monto));
-                    }
-                }
-                case "Transfer" -> {
-                    if (origen != null && destino != null ) {
-                        this.bankmodel.processTransaction(TransactionFactory.createTransfer(origen, destino, monto));
-                    }
-                }
-            }
-            view.clearFields();
-            JOptionPane.showMessageDialog(view, "Transaction executed successfully!");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(view, "Error executing transaction: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            monto = Double.parseDouble(view.getMonto());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(view, "El monto debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
+        Account origen = null, destino = null;
+
+        switch (tipo) {
+            case "Deposit" -> {
+                destino = this.bankmodel.getAccounts().findById(cuentaDestino);
+                TransactionValidator.validateDeposit(destino, monto);
+                this.bankmodel.processTransaction(TransactionFactory.createDeposit(destino, monto));
+            }
+            case "Withdraw" -> {
+                origen = this.bankmodel.getAccounts().findById(cuentaOrigen);
+                TransactionValidator.validateWithdrawal(origen, monto);
+                this.bankmodel.processTransaction(TransactionFactory.createWithdraw(origen, monto));
+            }
+            case "Transfer" -> {
+                origen = this.bankmodel.getAccounts().findById(cuentaOrigen);
+                destino = this.bankmodel.getAccounts().findById(cuentaDestino);
+                TransactionValidator.validateTransfer(origen, destino, monto);
+                this.bankmodel.processTransaction(TransactionFactory.createTransfer(origen, destino, monto));
+            }
+            default -> throw new ValidationException("Tipo de transacción no válido.");
+        }
+        view.clearFields();
+        JOptionPane.showMessageDialog(view, "Transacción ejecutada con éxito.");
+    } catch (ValidationException e) {
+        JOptionPane.showMessageDialog(view, "Error al ejecutar la transacción: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
 
 }

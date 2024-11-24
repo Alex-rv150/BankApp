@@ -12,11 +12,10 @@ public class ValidationException extends RuntimeException {
 
     /**
      * Constructor que recibe un mensaje de error.
-     * 
+     *
      * @param message El mensaje que describe el error de validación.
      */
     public ValidationException(String message) {
         super(message);
     }
 }
-

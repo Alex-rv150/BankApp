@@ -17,13 +17,13 @@ public class UserValidator {
         if (user == null) {
             throw new ValidationException("El usuario no puede ser nulo.");
         }
-        
-        ValidatorUserExits.validateUSersNoExits(userRepository, user);
-            
+
+        validateUSersNoExits(userRepository, user);
+
         if (user.getId() < 0 || String.valueOf(user.getId()).length() > 9) {
             throw new ValidationException("El ID debe ser mayor o igual a 0 y tener a lo más 9 dígitos.");
         }
-        if ( user.getFirstname().trim().isEmpty()) {
+        if (user.getFirstname().trim().isEmpty()) {
             throw new ValidationException("El nombre no puede estar vacío.");
         }
         if (user.getLastname().trim().isEmpty()) {
@@ -33,4 +33,19 @@ public class UserValidator {
             throw new ValidationException("La edad debe ser mayor o igual a 18.");
         }
     }
+
+    public static void validateUSersExits(UserRepository userRepository, User user) {
+        if (userRepository.findById(user.getId()) == null) {
+            throw new ValidationException("El usuario no está registrado en la plataforma.");
+        }
+    }
+
+    public static void validateUSersNoExits(UserRepository userRepository, User user) {
+
+        if (userRepository.findById(user.getId()) != null) {
+            throw new ValidationException("El usuario ya está registrado en la plataforma.");
+        }
+
+    }
+
 }

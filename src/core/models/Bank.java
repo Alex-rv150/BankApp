@@ -6,7 +6,6 @@ package core.models;
 
 import core.validators.AccountValidator;
 import core.validators.UserValidator;
-import core.validators.ValidationService;
 import java.util.ArrayList;
 
 /**
@@ -33,21 +32,13 @@ public class Bank {
 
     // Crear una nueva cuenta y asignarla a un usuario
     public void createAccount(BasicAccount account) {
-        AccountValidator.validateAccount(account, userRepository);
+        AccountValidator.validateAccount(account, userRepository,accountRepository);
         accountRepository.add(account);
     }
 
     // Realizar una transacción
     public Transaction processTransaction(Transaction transaction) {
         
-        
-        
-        ValidationService.validateTransactionAccounts(accountRepository, transaction);
-        if (transaction.getType() == TransactionType.WITHDRAW) {
-            ValidationService.validateWithdrawAmount(transaction.getSourceAccount(), transaction.getAmount());
-        } else if (transaction.getType() == TransactionType.TRANSFER) {
-            ValidationService.validateTransferAmount(transaction.getSourceAccount(), transaction.getAmount());
-        }
         transactionService.processTransaction(transaction);
         return transaction;
     }
@@ -57,8 +48,8 @@ public class Bank {
         return userRepository.findAll();
     }
 
-    public ArrayList<Account> getAccounts() {
-        return accountRepository.findAll();
+    public  AccountRepository getAccounts() {
+        return accountRepository;
     }
 
     public ArrayList<Transaction> getTransactions() {
