@@ -8,6 +8,7 @@ import Vista.CrearCuentaView;
 import core.models.Bank;
 import core.models.BasicAccount;
 import core.models.User;
+import core.validators.ValidationException;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -53,9 +54,9 @@ public class CrearCuentaController {
                 view.clearFields();
                 JOptionPane.showMessageDialog(view, "Account created successfully!");
             } else {
-                throw new Exception("User not found");
+                throw new ValidationException("User not found");
             }
-        } catch (Exception e) {
+        } catch (ValidationException e) {
             JOptionPane.showMessageDialog(view, "Error creating account: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }

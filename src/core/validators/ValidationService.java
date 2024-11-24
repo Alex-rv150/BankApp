@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package core.validate;
+package core.validators;
 
 import core.models.Account;
 import core.models.AccountRepository;
@@ -18,32 +18,11 @@ import java.util.regex.Pattern;
  */
 public class ValidationService {
     
-    // Validación del ID del usuario
-    public static void validateUserId(int id) {
-        if (id < 0 || id > 999_999_999) {
-            throw new IllegalArgumentException("El ID debe ser mayor o igual a 0 y tener como máximo 9 dígitos.");
-        }
-    }
+
     
-    // Validación del nombre y apellido
-    public static void validateName(String name, String fieldName) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException(fieldName + " no puede estar vacío.");
-        }
-    }
+
+
     
-    public static void validateAge(int age) {
-        if (age < 18) {
-            throw new IllegalArgumentException("La edad debe ser mayor o igual a 18.");
-        }
-    }
-    
-    // Validación para verificar si un usuario está registrado
-    public static void validateUserExists(UserRepository userRepository, User user) {
-        if (user == null || !userRepository.exists(user)) {
-            throw new IllegalArgumentException("El usuario no está registrado en la plataforma.");
-        }
-    }
     
     // Validación del formato del ID de la cuenta
     public static void validateAccountIdFormat(String accountId) {
@@ -53,12 +32,7 @@ public class ValidationService {
         }
     }
     
-    // Validación del saldo inicial
-    public static void validateInitialBalance(double balance) {
-        if (balance < 0) {
-            throw new IllegalArgumentException("El saldo inicial no puede ser inferior a 0.");
-        }
-    }
+ 
     
     // Validar que una cuenta exista en el repositorio
     public static void validateAccountExists(AccountRepository accountRepository, Account account) {

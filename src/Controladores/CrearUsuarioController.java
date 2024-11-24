@@ -7,6 +7,7 @@ package Controladores;
 import Vista.RegistroUsuarioView;
 import core.models.Bank;
 import core.models.User;
+import core.validators.ValidationException;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,12 +36,14 @@ public class CrearUsuarioController {
             String firstname = view.getFirstnameInput();
             String lastname = view.getLastnameInput();
             int age = Integer.parseInt(view.getAgeInput());
+            User user = new User(id, firstname, lastname, age);
 
             // Agregar usuario
-            this.bankmodel.addUser(new User(id, firstname, lastname, age));
+            this.bankmodel.addUser(user);
             view.clearFields();
             JOptionPane.showMessageDialog(view, "User registered successfully!");
-        } catch (Exception e) {
+
+        } catch (ValidationException e) {
             JOptionPane.showMessageDialog(view, "Error registering user: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 

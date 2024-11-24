@@ -4,7 +4,11 @@
  */
 package core.models;
 
-import core.validate.ValidationService;
+import core.validators.AccountValidator;
+import core.validators.UserValidator;
+import core.validators.ValidateUserExits;
+import core.validators.ValidationException;
+import core.validators.ValidationService;
 import java.util.ArrayList;
 
 /**
@@ -25,12 +29,13 @@ public class Bank {
 
     // Agregar un nuevo usuario al banco
     public void addUser(User user) {
+        UserValidator.validateUser(user, userRepository);
         userRepository.add(user);
     }
 
     // Crear una nueva cuenta y asignarla a un usuario
     public void createAccount(BasicAccount account) {
-        ValidationService.validateUserExists(userRepository, account.getOwner());
+        AccountValidator.validateAccount(account, userRepository);
         accountRepository.add(account);
     }
 
@@ -58,7 +63,7 @@ public class Bank {
     public ArrayList<Transaction> getTransactions() {
         return transactionService.getTransactionHistory();
     }
-    
+
     public ArrayList<User> getUsersOrderedById() {
         return userRepository.findAllOrderedById();
     }

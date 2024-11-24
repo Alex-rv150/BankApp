@@ -2,15 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package bank;
+package Vista;
 
 import Controladores.CrearCuentaController;
-import Vista.CrearCuentaView;
-import Vista.HacerTransaccionView;
-import Vista.ListarCuentasView;
-import Vista.ListarTransaccionesView;
-import Vista.ListarUsuariosView;
-import Vista.RegistroUsuarioView;
 import core.models.Bank;
 import Controladores.CrearUsuarioController;
 import Controladores.ObtenerInformacionCuentasController;
@@ -22,7 +16,7 @@ import Controladores.RealizarTransaccionController;
  *
  * @author edangulo
  */
-public class Main extends javax.swing.JFrame {
+public class MainVista extends javax.swing.JFrame {
 
     private final Bank bankmodel;
     private javax.swing.JTabbedPane PanelOpciones;
@@ -33,6 +27,7 @@ public class Main extends javax.swing.JFrame {
     private ListarCuentasView listarCuentasView;
     private ListarUsuariosView listarUsuariosView;
     private ListarTransaccionesView listarTransaccionesView;
+    
     //////
 
     ///// Controladores
@@ -42,9 +37,10 @@ public class Main extends javax.swing.JFrame {
     private ObtenerInformacionTransaccionesController obtenerInformacionTransaccionesController;
     private ObtenerInformacionUsuariosController obtenerInformacionUsuariosController;
     private RealizarTransaccionController realizarTransaccionController;
+
     //////
 
-    public Main() {
+    public MainVista() {
         this.bankmodel = new Bank();
         initComponents();
     }
@@ -53,6 +49,24 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
         PanelOpciones = new javax.swing.JTabbedPane();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        configurarVistas();
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(PanelOpciones)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(PanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        pack();
+    }
+
+    public void configurarVistas() {
 
 ///////                     Registrar Usuario
         registroUsuarioView = new RegistroUsuarioView();
@@ -90,26 +104,9 @@ public class Main extends javax.swing.JFrame {
         obtenerInformacionTransaccionesController = new ObtenerInformacionTransaccionesController(listarTransaccionesView, this.bankmodel);
         // Configurar acción del botón refrescar
 
-////////////////////////////////////
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(PanelOpciones)
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(PanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        pack();
     }
-
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(() -> {
-            new Main().setVisible(true);
-        });
-    }
-
 }
+
+
+
+

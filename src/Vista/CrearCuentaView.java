@@ -41,48 +41,59 @@ public class CrearCuentaView extends JPanel {
         crearCuentaBoton = new JButton("Create");
         crearCuentaBoton.setFont(new java.awt.Font("Segoe UI", 3, 12));
 
+      
+
+    
+        
         // Configuración del diseño
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
-
+        
         layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(30)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(userIdLabel)
-                                        .addComponent(initialBalanceLabel))
-                                .addGap(18)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(userIdInput)
-                                        .addComponent(initialBalanceInput, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                                .addContainerGap(30, Short.MAX_VALUE))
-                        .addGroup(GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
-                                .addGap(100)
-                                .addComponent(tituloLabel))
-                        .addGroup(GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
-                                .addGap(150)
-                                .addComponent(crearCuentaBoton))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(238, 238, 238)
+                        .addComponent(tituloLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(userIdLabel)
+                            .addComponent(initialBalanceLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(initialBalanceInput)
+                            .addComponent(userIdInput, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE))))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(265, 265, 265)
+                .addComponent(crearCuentaBoton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
         layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(20)
-                                .addComponent(tituloLabel)
-                                .addGap(20)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(userIdLabel)
-                                        .addComponent(userIdInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addGap(20)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(initialBalanceLabel)
-                                        .addComponent(initialBalanceInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addGap(30)
-                                .addComponent(crearCuentaBoton)
-                                .addContainerGap(30, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(tituloLabel)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userIdLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(initialBalanceInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(initialBalanceLabel))
+                .addGap(18, 18, 18)
+                .addComponent(crearCuentaBoton)
+                .addContainerGap(163, Short.MAX_VALUE))
         );
+        
+        
     }
+    
+                               
+
 
     // Métodos para interactuar con la vista
     public String getUserIdInput() {
