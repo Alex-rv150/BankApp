@@ -8,39 +8,26 @@ package core.models;
  *
  * @author Janus
  */
-public class BasicAccount implements Account{
-    
-    private final String id;
-    private final User owner;
-    private double balance;
-    
-    public BasicAccount(String id, User owner) {
-        this.id = id;
-        this.owner = owner;
-        this.balance = 0;
-        this.owner.addAccount(this);
-    }
-    
+public class BasicAccount extends Account {
+
     public BasicAccount(String id, User owner, double initialBalance) {
-        this.id = id;
-        this.owner = owner;
-        this.balance = initialBalance;
+        super(id, owner, initialBalance);
         this.owner.addAccount(this);
     }
 
     @Override
     public String getId() {
-        return id;
+        return this.accountId;
     }
 
     @Override
     public User getOwner() {
-        return owner;
+        return this.owner;
     }
 
     @Override
     public double getBalance() {
-        return balance;
+        return this.balance;
     }
 
     @Override
@@ -63,5 +50,4 @@ public class BasicAccount implements Account{
         return true;
     }
 
-    
 }

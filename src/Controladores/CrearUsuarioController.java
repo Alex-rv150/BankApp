@@ -10,7 +10,6 @@ import Vista.RegistroUsuarioView;
 import core.models.Bank;
 import core.models.User;
 import core.validators.UserValidator;
-import core.validators.ValidationException;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +30,7 @@ public class CrearUsuarioController {
     private void initController() {
         view.setRegistroUsuarioBotonActionListener(evt -> handleRegistrarUsuario());
     }
+    
     
     private void handleRegistrarUsuario() {
         Response response = registrarUsuario();

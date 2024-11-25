@@ -11,6 +11,7 @@ import Controladores.ObtenerInformacionCuentasController;
 import Controladores.ObtenerInformacionTransaccionesController;
 import Controladores.ObtenerInformacionUsuariosController;
 import Controladores.RealizarTransaccionController;
+import Services.AccountService;
 
 /**
  *
@@ -37,6 +38,10 @@ public class MainVista extends javax.swing.JFrame {
     private ObtenerInformacionTransaccionesController obtenerInformacionTransaccionesController;
     private ObtenerInformacionUsuariosController obtenerInformacionUsuariosController;
     private RealizarTransaccionController realizarTransaccionController;
+    //////
+   
+    //// Servicios
+    private AccountService accountService;
 
     //////
 
@@ -77,7 +82,8 @@ public class MainVista extends javax.swing.JFrame {
 ///////                         Crear Cuenta
         crearCuentaView = new CrearCuentaView();
         PanelOpciones.addTab("Create Account", crearCuentaView);
-        crearCuentaController = new CrearCuentaController(crearCuentaView, this.bankmodel);
+        accountService = new AccountService(this.bankmodel);
+        crearCuentaController = new CrearCuentaController(crearCuentaView, accountService);
 ///////
 
 ///////                        Hacer Transaccion

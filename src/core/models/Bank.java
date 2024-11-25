@@ -4,6 +4,7 @@
  */
 package core.models;
 
+import Services.TransactionService;
 import core.models.repository.AccountRepository;
 import core.models.repository.UserRepository;
 import core.models.transactions.Transaction;

@@ -8,14 +8,27 @@ package core.models;
  *
  * @author edangulo
  */
-public interface Account {
+public abstract class Account {
+    protected final String accountId;
+    protected final User owner;
+    protected double balance;
     
-    String getId();
-    User getOwner();
-    double getBalance();
-    void deposit(double amount);
-    boolean withdraw(double amount);
+    public Account(String accountId, User owner, double balance) {
+        this.accountId = accountId;
+        this.owner = owner;
+        this.balance = balance;
+    }
+    
+    public abstract String getId();
+    public abstract User getOwner();
+    public abstract double getBalance();
+    public abstract void deposit(double amount);
+    public abstract boolean withdraw(double amount);
 
+    
+    
+    
+    
     
     
 }
