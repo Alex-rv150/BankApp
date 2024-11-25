@@ -4,9 +4,13 @@
  */
 package Controladores;
 
+import Controladores.utils.Response;
+import Controladores.utils.Status;
 import Vista.ListarUsuariosView;
 import core.models.Bank;
 import core.models.User;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,15 +33,37 @@ public class ObtenerInformacionUsuariosController {
 
     private void refrescarUsuarios() {
         view.clearTable();
-        for (User user : this.bankmodel.getUsersOrderedById()) {
-            view.addRow(new Object[]{
-                user.getId(),
-                user.getFirstname() + " " + user.getLastname(),
-                user.getAge(),
-                user.getNumAccounts()
-            });
+        Response response = obtenerUsuarios();
+
+        if (response.getStatus() == Status.OK) {
+            // Si la respuesta es exitosa, muestra los usuarios en la tabla
+            ArrayList<User> usuarios = (ArrayList<User>) response.getObject();
+            for (User user : usuarios) {
+                view.addRow(new Object[]{
+                    user.getId(),
+                    user.getFirstname() + " " + user.getLastname(),
+                    user.getAge(),
+                    user.getNumAccounts()
+                });
+            }
+            JOptionPane.showMessageDialog(view, response.getMessage(), "Información", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // Si ocurre un error o no hay usuarios, muestra el mensaje correspondiente
+            JOptionPane.showMessageDialog(view, response.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
+    }
+    
+    private Response obtenerUsuarios() {
+        try {
+            ArrayList<User> usuarios = this.bankmodel.getUsersOrderedById();
+            if (usuarios.isEmpty()) {
+                return new Response("No se encontraron usuarios en el sistema.", Status.NO_CONTENT);
+            }
+            return new Response("Usuarios obtenidos exitosamente.", Status.OK, usuarios);
+        } catch (Exception e) {
+            return new Response("Error al obtener los usuarios: " + e.getMessage(), Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

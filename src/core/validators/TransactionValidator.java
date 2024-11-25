@@ -4,6 +4,8 @@
  */
 package core.validators;
 
+import Controladores.utils.Response;
+import Controladores.utils.Status;
 import core.models.Account;
 
 /**
@@ -12,40 +14,39 @@ import core.models.Account;
  */
 public class TransactionValidator {
 
-    public static void validateWithdrawal(Account fromAccount, double amount) {
+    public static Response validateWithdrawal(Account fromAccount, double amount) {
         if (fromAccount == null) {
-                    throw new ValidationException("La cuenta origen no existe.");
+            return new Response("La cuenta origen no existe.", Status.NOT_FOUND);
         }
-        
         if (amount <= 0) {
-            throw new ValidationException("El monto a retirar debe ser mayor que 0.");
+            return new Response("El monto a retirar debe ser mayor que 0.", Status.BAD_REQUEST);
         }
         if (fromAccount.getBalance() < amount) {
-            throw new ValidationException("El saldo de la cuenta es insuficiente para esta transacción.");
+            return new Response("El saldo de la cuenta es insuficiente para esta transacción.", Status.BAD_REQUEST);
         }
-        
+        return new Response("Validación exitosa.", Status.OK);
     }
 
-    public static void validateDeposit(Account toAccount, double amount) {
+    public static Response validateDeposit(Account toAccount, double amount) {
         if (toAccount == null) {
-                    throw new ValidationException("La cuenta destino no existe.");
-                }
-        if (amount <= 0) {
-            throw new ValidationException("El monto a Depositar debe ser mayor que 0.");
+            return new Response("La cuenta destino no existe.", Status.NOT_FOUND);
         }
-
-        
+        if (amount <= 0) {
+            return new Response("El monto a depositar debe ser mayor que 0.", Status.BAD_REQUEST);
+        }
+        return new Response("Validación exitosa.", Status.OK);
     }
 
-    public static void validateTransfer(Account fromAccount, Account toAccount, double amount) {
+    public static Response validateTransfer(Account fromAccount, Account toAccount, double amount) {
         if (fromAccount == null || toAccount == null) {
-            throw new ValidationException("Ambas cuentas deben estar registradas en el sistema.");
+            return new Response("Ambas cuentas deben estar registradas en el sistema.", Status.NOT_FOUND);
         }
         if (amount <= 0) {
-            throw new ValidationException("El monto a transferir debe ser mayor que 0.");
+            return new Response("El monto a transferir debe ser mayor que 0.", Status.BAD_REQUEST);
         }
         if (fromAccount.getBalance() < amount) {
-            throw new ValidationException("El saldo de la cuenta origen es insuficiente para transferir.");
+            return new Response("El saldo de la cuenta origen es insuficiente para transferir.", Status.BAD_REQUEST);
         }
+        return new Response("Validación exitosa.", Status.OK);
     }
 }

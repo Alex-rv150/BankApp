@@ -4,6 +4,8 @@
  */
 package Controladores;
 
+import Controladores.utils.Response;
+import Controladores.utils.Status;
 import Vista.HacerTransaccionView;
 import core.models.Account;
 import core.models.Bank;
@@ -46,31 +48,47 @@ public class RealizarTransaccionController {
         }
 
         Account origen = null, destino = null;
+        Response response;
 
         switch (tipo) {
             case "Deposit" -> {
                 destino = this.bankmodel.getAccounts().findById(cuentaDestino);
-                TransactionValidator.validateDeposit(destino, monto);
+                response = TransactionValidator.validateDeposit(destino, monto);
+                if (response.getStatus() != Status.OK) {
+                    JOptionPane.showMessageDialog(view, response.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 this.bankmodel.processTransaction(TransactionFactory.createDeposit(destino, monto));
             }
             case "Withdraw" -> {
                 origen = this.bankmodel.getAccounts().findById(cuentaOrigen);
-                TransactionValidator.validateWithdrawal(origen, monto);
+                response = TransactionValidator.validateWithdrawal(origen, monto);
+                if (response.getStatus() != Status.OK) {
+                    JOptionPane.showMessageDialog(view, response.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 this.bankmodel.processTransaction(TransactionFactory.createWithdraw(origen, monto));
             }
             case "Transfer" -> {
                 origen = this.bankmodel.getAccounts().findById(cuentaOrigen);
                 destino = this.bankmodel.getAccounts().findById(cuentaDestino);
-                TransactionValidator.validateTransfer(origen, destino, monto);
+                response = TransactionValidator.validateTransfer(origen, destino, monto);
+                if (response.getStatus() != Status.OK) {
+                    JOptionPane.showMessageDialog(view, response.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 this.bankmodel.processTransaction(TransactionFactory.createTransfer(origen, destino, monto));
             }
-            default -> throw new ValidationException("Tipo de transacción no válido.");
+            default -> {
+                JOptionPane.showMessageDialog(view, "Tipo de transacción no válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
         }
+
         view.clearFields();
         JOptionPane.showMessageDialog(view, "Transacción ejecutada con éxito.");
-    } catch (ValidationException e) {
-        JOptionPane.showMessageDialog(view, "Error al ejecutar la transacción: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
-}
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(view, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }}
 
 }
