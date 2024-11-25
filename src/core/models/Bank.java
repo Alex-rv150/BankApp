@@ -4,6 +4,9 @@
  */
 package core.models;
 
+import core.models.repository.AccountRepository;
+import core.models.repository.UserRepository;
+import core.models.transactions.Transaction;
 import core.validators.AccountValidator;
 import core.validators.UserValidator;
 import java.util.ArrayList;

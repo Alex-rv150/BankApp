@@ -9,7 +9,7 @@ import Controladores.utils.Status;
 import Vista.ListarTransaccionesView;
 
 import core.models.Bank;
-import core.models.Transaction;
+import core.models.transactions.Transaction;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 

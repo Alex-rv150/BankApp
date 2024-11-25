@@ -7,7 +7,7 @@ package core.validators;
 import Controladores.utils.Response;
 import Controladores.utils.Status;
 import core.models.User;
-import core.models.UserRepository;
+import core.models.repository.UserRepository;
 
 /**
  *

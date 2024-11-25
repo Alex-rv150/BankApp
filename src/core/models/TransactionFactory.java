@@ -4,6 +4,11 @@
  */
 package core.models;
 
+import core.models.transactions.DepositTransaction;
+import core.models.transactions.Transaction;
+import core.models.transactions.TransferTransaction;
+import core.models.transactions.WithdrawTransaction;
+
 /**
  *
  * @author Janus

@@ -7,8 +7,8 @@ package core.validators;
 import Controladores.utils.Response;
 import Controladores.utils.Status;
 import core.models.Account;
-import core.models.AccountRepository;
-import core.models.UserRepository;
+import core.models.repository.AccountRepository;
+import core.models.repository.UserRepository;
 import java.util.regex.Pattern;
 
 /**
